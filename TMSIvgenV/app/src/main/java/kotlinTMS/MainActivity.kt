@@ -25,12 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         tvtext = findViewById(R.id.tvText)
 
-        admin1.add(1,"Frank man")
-        admin1.add(2,"Don't trust")
-        admin1.add(3,"Reliable man")
-        admin2.add(4,"Frank man")
-        admin2.add(5,"Dont't trust")
-        admin2.add(6,"Frank woman")
+        admin1.add(consumer1.id,"Frank man")
+        admin1.add(consumer2.id,"Don't trust")
+        admin1.add(consumer3.id,"Reliable man")
+        admin2.add(consumer4.id,"Frank man")
+        admin2.add(consumer5.id,"Dont't trust")
+        admin2.add(consumer6.id,"Frank woman")
 
         tvtext.text = admin1.toText(2)
     }
