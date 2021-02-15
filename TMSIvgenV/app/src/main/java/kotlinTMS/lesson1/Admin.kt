@@ -3,19 +3,18 @@ package kotlinTMS.lesson1
 
 class Admin(override var name: String, override var id: Int) : User() {
 
-    var list = ListOfConsumers()
+    var list = mutableListOf<ConsumersInfo>()
 
-    fun add(id:Int ,consumer:Consumer){
+    fun add(id:Int ,note:String){
 
-        list.consumersList[id] = consumer
+        var consumersInfo = ConsumersInfo(id,note)
+        list.add(consumersInfo)
 
     }
 
     fun toText(id:Int):String{
 
-        return "Name : ${list.consumersList[id]!!.name}, id = ${list.consumersList[id]!!.id}, age = " +
-                "${list.consumersList[id]!!.age}"
-
+        return "Id: ${list[id].id}, note : ${list[id].note}"
 
     }
 
