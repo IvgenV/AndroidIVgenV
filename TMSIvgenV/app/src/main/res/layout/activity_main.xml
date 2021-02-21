@@ -6,14 +6,37 @@
     android:layout_height="match_parent"
     tools:context="kotlinTMS.MainActivity">
 
-    <TextView
-        android:id="@+id/tvText"
+
+    <Button
+        android:id="@+id/dz1button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:text="Open dz1"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dz2button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open dz2"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dz1button" />
+
+    <Button
+        android:id="@+id/dz3button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:text="Open dz3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dz2button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
