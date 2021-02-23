@@ -26,14 +26,18 @@ class Dz3Activity : AppCompatActivity() {
         button.visible()
         sortUsers()
 
-
-
         button.setOnClickListener {
+
+            tvText.text = ""
             GlobalScope.async {
-                fakeServer()
+                tvText.text = tvText.text.toString() +  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+            }
+            Thread.sleep(3000)
+            GlobalScope.async {
+                tvText.text = tvText.text.toString() +  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+                tvText.text = tvText.text.toString() +  URL("https://jsonplaceholder.typicode.com/todos/1").readText()
             }
         }
-
 
     }
 
@@ -60,15 +64,5 @@ class Dz3Activity : AppCompatActivity() {
             tvText.text = tvText.text.toString() + "Age: ${i.age}, id: ${i.id}, name: ${i.name}\n"
         }
     }
-
-    suspend fun fakeServer(){
-
-        tvText.text =  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
-        delay(3000)
-        tvText.text =  tvText.text.toString() + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) +'\n'
-        tvText.text = tvText.text.toString() + URL("https://jsonplaceholder.typicode.com/todos/1").readText()
-
-    }
-
 
 }
