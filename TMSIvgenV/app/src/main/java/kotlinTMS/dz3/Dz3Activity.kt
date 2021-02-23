@@ -31,7 +31,7 @@ class Dz3Activity : AppCompatActivity() {
 
             GlobalScope.async {
 
-                fakeserver()
+                tvText.text = fakeserver()
 
             }
 
@@ -63,14 +63,14 @@ class Dz3Activity : AppCompatActivity() {
         }
     }
 
-    suspend fun fakeserver(){
+    suspend fun fakeserver():String{
 
         tvText.text = ""
         var txt = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
         delay(3000)
         txt += "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
                 URL("https://jsonplaceholder.typicode.com/todos/1").readText()
-        tvText.text = txt
+        return txt
     }
 
 
