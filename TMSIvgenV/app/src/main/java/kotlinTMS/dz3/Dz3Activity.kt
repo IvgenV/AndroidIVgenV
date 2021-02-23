@@ -1,6 +1,7 @@
 package kotlinTMS.dz3
 
 import android.os.Bundle
+import android.provider.Contacts
 import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
@@ -28,15 +29,12 @@ class Dz3Activity : AppCompatActivity() {
 
         button.setOnClickListener {
 
-            tvText.text = ""
             GlobalScope.async {
-                tvText.text = tvText.text.toString() +  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+
+                fakeserver()
+
             }
-            Thread.sleep(3000)
-            GlobalScope.async {
-                tvText.text = tvText.text.toString() +  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
-                tvText.text = tvText.text.toString() +  URL("https://jsonplaceholder.typicode.com/todos/1").readText()
-            }
+
         }
 
     }
@@ -64,5 +62,16 @@ class Dz3Activity : AppCompatActivity() {
             tvText.text = tvText.text.toString() + "Age: ${i.age}, id: ${i.id}, name: ${i.name}\n"
         }
     }
+
+    suspend fun fakeserver(){
+
+        tvText.text = ""
+        var txt = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+        delay(3000)
+        txt += "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
+                URL("https://jsonplaceholder.typicode.com/todos/1").readText()
+        tvText.text = txt
+    }
+
 
 }
