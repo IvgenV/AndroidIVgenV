@@ -138,7 +138,7 @@ class Dz2Activity : AppCompatActivity() {
                                         .toString()
                                 idMessage++
                                 inputMessage.setText("")
-                                chat.text = chat.text.toString() + message!!.simpleText()
+                                chat.text = chat.text.toString() + message!!.toString()
                             }
 
                             editId==2 -> {
@@ -148,7 +148,7 @@ class Dz2Activity : AppCompatActivity() {
                                         .toString()
                                 idMessage++
                                 inputMessage.setText("")
-                                chat.text = chat.text.toString() + message!!.simpleText()
+                                chat.text = chat.text.toString() + message!!.toString()
                             }
 
                         }

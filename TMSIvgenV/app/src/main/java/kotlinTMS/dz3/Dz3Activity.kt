@@ -1,6 +1,8 @@
 package kotlinTMS.dz3
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Contacts
 import android.provider.Settings
 import android.widget.Button
@@ -29,6 +31,9 @@ class Dz3Activity : AppCompatActivity() {
 
         button.setOnClickListener {
 
+
+
+
             GlobalScope.async {
 
                 tvText.text = fakeserver()
@@ -36,6 +41,7 @@ class Dz3Activity : AppCompatActivity() {
             }
 
         }
+
 
     }
 
