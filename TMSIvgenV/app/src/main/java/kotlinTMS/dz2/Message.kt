@@ -9,8 +9,8 @@ data class Message(
         val date:Date = Date()
 ) {
 
-    /*operator fun plus(message: Message):Message{
-        return this.copy(text = this.text + "\n" +  message.text)
+   /* operator fun plus(message: Message):Message{
+        return this.copy(text = this.text + "\n" + "id: ${message.id} " +  message.text)
     }*/
 
     fun simpleText():String{

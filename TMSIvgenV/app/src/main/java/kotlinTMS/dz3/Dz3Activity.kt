@@ -1,16 +1,14 @@
 package kotlinTMS.dz3
 
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tmsivgenv.R
 import kotlinTMS.dz1.Consumer
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,20 +23,20 @@ class Dz3Activity : AppCompatActivity() {
 
         button = findViewById(R.id.invisibleButton)
         tvText = findViewById(R.id.textVDZ3)
-        button.vissible()
-        sorUsers()
+        button.visible()
+        sortUsers()
 
-           button.setOnClickListener {
-                GlobalScope.async {
-                    tvText.text =  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
-                    delay(5000)
-                    tvText.text =  tvText.text.toString() + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-                }
+
+
+        button.setOnClickListener {
+            GlobalScope.async {
+                fakeServer()
             }
+        }
 
     }
 
-    fun Button.vissible(){
+    private fun Button.visible(){
 
         visibility = Button.VISIBLE
 
@@ -46,7 +44,7 @@ class Dz3Activity : AppCompatActivity() {
 
     }
 
-    fun sorUsers(){
+    fun sortUsers(){
 
         var list = mutableListOf(
                 Consumer("Ivgen",1,27),
@@ -62,12 +60,14 @@ class Dz3Activity : AppCompatActivity() {
         }
     }
 
-    suspend fun fakeServer():String{
+    suspend fun fakeServer(){
 
-        val str1 = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-        delay(5000)
-        val str2 = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-        return str1 + '\n' + str2
+        tvText.text =  SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+        delay(3000)
+        tvText.text =  tvText.text.toString() + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) +'\n'
+        tvText.text = tvText.text.toString() + URL("https://jsonplaceholder.typicode.com/todos/1").readText()
+
     }
+
 
 }

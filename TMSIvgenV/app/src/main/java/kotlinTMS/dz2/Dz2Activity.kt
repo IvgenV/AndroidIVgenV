@@ -11,7 +11,7 @@ import java.lang.NumberFormatException
 
 class Dz2Activity : AppCompatActivity() {
 
-    lateinit var userId: TextView
+    lateinit var userIdTV: TextView
     lateinit var chat:TextView
     lateinit var button: Button
     lateinit var inputUserId: EditText
@@ -21,30 +21,28 @@ class Dz2Activity : AppCompatActivity() {
     val userIVgen = 1
     val userSasha = 2
     var id = 0
-    var idFromUser:Int? = null
-    var idFromEdit:Int? = null
+    var userId = 0
+    var editId = 0
     var idMessage = 0
     var message: Message? = null
-    lateinit var firstMessage:Message
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dz2)
 
-        userId = findViewById(R.id.userId)
+        userIdTV = findViewById(R.id.userId)
         button = findViewById(R.id.sendButton)
         inputUserId = findViewById(R.id.inputUserId)
         inputMessage = findViewById(R.id.inputMessage)
         inputEditId = findViewById(R.id.idEditText)
         chat = findViewById(R.id.chat)
 
-        ///chat.text = EditMessage({text->me.lowerCase(text)},me.text).toString()
 
         button.setOnClickListener{
 
             try {
-                idFromUser = inputUserId.text.toString().toInt()
-                idFromEdit = inputEditId.text.toString().toInt()
+                userId = inputUserId.text.toString().toInt()
+                editId = inputEditId.text.toString().toInt()
             } catch (e:NumberFormatException){
                 e.printStackTrace()
             }
@@ -52,11 +50,11 @@ class Dz2Activity : AppCompatActivity() {
 
             if(inputUserId.text.isEmpty()){
                 Toast.makeText(applicationContext,"Input id!", Toast.LENGTH_SHORT).show()
-            }else if(idFromUser!=1&&idFromUser!=2){
+            }else if(userId!=1&&userId!=2){
                 Toast.makeText(applicationContext,"This user not found!", Toast.LENGTH_SHORT).show()
-            }else if(idFromEdit!=1&&idFromEdit!=2&&inputEditId.text.isNotEmpty()){
+            }else if(editId!=1&&editId!=2&&inputEditId.text.isNotEmpty()){
                 Toast.makeText(applicationContext,"This edit setting not found!", Toast.LENGTH_SHORT).show()
-            }else if(idFromUser==userIVgen||idFromUser==userSasha){
+            }else if(userId==userIVgen||userId==userSasha){
 
                 when {
                     inputMessage.text.isEmpty() -> {
@@ -64,58 +62,97 @@ class Dz2Activity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT).show()
                     }
                     message==null -> {
-                        id = idFromUser!!
-                        idMessage++
 
-                        if(idFromEdit==1){
-                            message = Message(id = idMessage,text = inputMessage.text.toString())
-                            inputMessage.setText("")
-                            message!!.text = EditMessage({text->message!!.lowerCase(text)},message!!.text).toString()
-                            chat.text = message!!.toString()
-                        }else {
-                            message = Message(id = idMessage,text = inputMessage.text.toString())
-                            inputMessage.setText("")
-                            message!!.text = EditMessage({text->message!!.upperCase(text)},message!!.text).toString()
-                            chat.text = message!!.toString()
-                        }
-                    }
-                    id==idFromUser -> {
+                        id = userId
 
                         when {
-                            idFromEdit==1 -> {
-                                message!!.id = idMessage
-                                message!!.text = EditMessage({text->message!!.lowerCase(text)},inputMessage.text.toString())
-                                        .toString()
-                                idMessage++
+                            inputEditId.text.isEmpty() -> {
+                                message = Message(id = idMessage,text = inputMessage.text.toString())
                                 inputMessage.setText("")
-                                chat.text = chat.text.toString() + message!!.simpleText() + "Its to lover"
-                            }
-                            idFromEdit==2 -> {
-                                message!!.id = idMessage
-                                message!!.text = EditMessage({text->message!!.upperCase(text)},inputMessage.text.toString())
-                                        .toString()
                                 idMessage++
-                                inputMessage.setText("")
-                                chat.text = chat.text.toString() + message!!.simpleText() + "its to upper"
+                                chat.text = message!!.toString()
                             }
-                            //////Не заходит в эту ветку, если inputEditId был сначала установен например
-                            ///на значении 1 а затем значение было удалено, но если написать первое сообщение
-                            /// с отсутствующим значением в inputEditId то хаходит
+                            editId==1 -> {
+                                message = Message(id = idMessage,text = inputMessage.text.toString())
+                                inputMessage.setText("")
+                                idMessage++
+                                message!!.text = EditMessage({text->message!!.lowerCase(text)},message!!.text).toString()
+                                chat.text = message!!.toString()
+                            }
+                            editId==2 -> {
+                                message = Message(id = idMessage,text = inputMessage.text.toString())
+                                inputMessage.setText("")
+                                idMessage++
+                                message!!.text = EditMessage({text->message!!.upperCase(text)},message!!.text).toString()
+                                chat.text = message!!.toString()
+                            }
+
+                        }
+                    }
+
+                    id==userId -> {
+
+                        when {
                             inputEditId.text.isEmpty() -> {
                                 message!!.id = idMessage
                                 message!!.text = inputMessage.text.toString()
                                 idMessage++
                                 inputMessage.setText("")
-                                chat.text = chat.text.toString() + message!!.simpleText() + "its default"
+                                chat.text = chat.text.toString() + message!!.simpleText()
+                            }
+                            editId==1 -> {
+                                message!!.id = idMessage
+                                message!!.text = EditMessage({text->message!!.lowerCase(text)},inputMessage.text.toString())
+                                        .toString()
+                                idMessage++
+                                inputMessage.setText("")
+                                chat.text = chat.text.toString() + message!!.simpleText()
+                            }
+                            editId==2 -> {
+                                message!!.id = idMessage
+                                message!!.text = EditMessage({text->message!!.upperCase(text)},inputMessage.text.toString())
+                                        .toString()
+                                idMessage++
+                                inputMessage.setText("")
+                                chat.text = chat.text.toString() + message!!.simpleText()
                             }
                         }
                     }
-                    id!=idFromUser -> {
-                        id = idFromUser!!
-                        message = Message(id = idMessage,text = inputMessage.text.toString())
-                        idMessage++
-                        inputMessage.setText("")
-                        chat.text = chat.text.toString() + message!!.toString()
+                    id!=userId -> {
+
+                        when{
+
+                            inputEditId.text.isEmpty() -> {
+                                id = userId
+                                message!!.id = idMessage
+                                message!!.text = inputMessage.text.toString()
+                                idMessage++
+                                inputMessage.setText("")
+                                chat.text = chat.text.toString() + message!!.toString()
+                            }
+
+                            editId==1 -> {
+                                id = userId
+                                message!!.id = idMessage
+                                message!!.text = EditMessage({text->message!!.lowerCase(text)},inputMessage.text.toString())
+                                        .toString()
+                                idMessage++
+                                inputMessage.setText("")
+                                chat.text = chat.text.toString() + message!!.simpleText()
+                            }
+
+                            editId==2 -> {
+                                id = userId
+                                message!!.id = idMessage
+                                message!!.text = EditMessage({text->message!!.upperCase(text)},inputMessage.text.toString())
+                                        .toString()
+                                idMessage++
+                                inputMessage.setText("")
+                                chat.text = chat.text.toString() + message!!.simpleText()
+                            }
+
+                        }
+
                     }
                 }
 
