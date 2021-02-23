@@ -34,6 +34,7 @@ class Dz3Activity : AppCompatActivity() {
             }
         }
 
+
     }
 
     private fun Button.visible(){
