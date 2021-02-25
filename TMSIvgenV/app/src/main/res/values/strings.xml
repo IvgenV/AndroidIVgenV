@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TMSIvgenV</string>
+    <string name="inputLogin">Input Login</string>
+    <string name="inputPassword">Input Password</string>
+    <string name="buttonAdd">Add User</string>
+    <string name="buttonLogin">Login</string>
+    <string name="result">Result going there</string>
+    <string name="checkbox1">Result going there</string>
+    <string name="checkbox2">Result going there</string>
+    <string name="checkbox3">Result going there</string>
 </resources>

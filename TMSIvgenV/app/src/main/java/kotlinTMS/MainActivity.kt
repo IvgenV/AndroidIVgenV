@@ -8,6 +8,7 @@ import com.example.tmsivgenv.R
 import kotlinTMS.dz1.Dz1Activity
 import kotlinTMS.dz2.Dz2Activity
 import kotlinTMS.dz3.Dz3Activity
+import kotlinTMS.dz4.Dz4Activity
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var buttonDz1:Button
     lateinit var buttonDz2:Button
     lateinit var buttonDz3:Button
+    lateinit var buttonDz4:Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         buttonDz1 = findViewById(R.id.dz1button)
         buttonDz2 = findViewById(R.id.dz2button)
         buttonDz3 = findViewById(R.id.dz3button)
+        buttonDz4 = findViewById(R.id.dz4button)
 
 
         buttonDz1.setOnClickListener{
@@ -37,6 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonDz3.setOnClickListener{
             val intent = Intent(this, Dz3Activity::class.java)
+            startActivity(intent)
+        }
+
+        buttonDz4.setOnClickListener{
+            val intent = Intent(this, Dz4Activity::class.java)
             startActivity(intent)
         }
 

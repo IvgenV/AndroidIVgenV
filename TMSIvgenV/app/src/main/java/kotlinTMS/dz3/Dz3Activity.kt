@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Contacts
 import android.provider.Settings
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -29,19 +30,33 @@ class Dz3Activity : AppCompatActivity() {
         button.visible()
         sortUsers()
 
+
+        GlobalScope.launch {
+            val response = fakeserver()
+
+            tvText.post {
+
+                tvText.text = response.toString()
+
+           }
+       }
+
         button.setOnClickListener {
 
+          /*   GlobalScope.async {
 
+               val response = fakeserver()
 
+                Log.e("Response fun",response.toString())
 
-            GlobalScope.async {
+                Handler(Looper.getMainLooper()).post {
+                    tvText.text = response.toString()
 
-                tvText.text = fakeserver()
+                }
 
-            }
+            }*/
 
         }
-
 
     }
 
@@ -69,15 +84,17 @@ class Dz3Activity : AppCompatActivity() {
         }
     }
 
-    suspend fun fakeserver():String{
+    suspend fun fakeserver():Response{
 
         tvText.text = ""
-        var txt = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+        var start = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
+        Log.e("Request", "Started")
         delay(3000)
-        txt += "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
+        Log.e("Request", "After delay")
+        var end = "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
                 URL("https://jsonplaceholder.typicode.com/todos/1").readText()
-        return txt
+        Log.e("Request", end)
+        return Response(start,end)
     }
-
 
 }
