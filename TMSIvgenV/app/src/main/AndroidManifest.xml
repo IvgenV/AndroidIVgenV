@@ -8,6 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:hardwareAccelerated="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TMSIvgenV">
@@ -22,6 +23,7 @@
         <activity android:name="kotlinTMS.dz2.Dz2Activity"/>
         <activity android:name="kotlinTMS.dz3.Dz3Activity"/>
         <activity android:name="kotlinTMS.dz4.Dz4Activity"/>
+        <activity android:name="kotlinTMS.dz5.Dz5Activity"/>
     </application>
 
 </manifest>
