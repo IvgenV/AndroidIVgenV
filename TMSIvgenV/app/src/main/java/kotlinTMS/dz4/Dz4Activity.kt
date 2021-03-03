@@ -60,8 +60,8 @@ class Dz4Activity : AppCompatActivity() {
           if(addUser(login.text.toString())){
               listOfUsers.add(UserDz4(login.text.toString(),password.text.toString(),++id))
               Toast.makeText(applicationContext,"Successful added!",Toast.LENGTH_SHORT).show()
-           } else if(!addUser(login.text.toString())) Toast.makeText(applicationContext,"This user already exist",Toast.LENGTH_SHORT).show()
-
+           } else if(!addUser(login.text.toString())) Toast.makeText(applicationContext,
+                  "This user already exist",Toast.LENGTH_SHORT).show()
 
         }
 

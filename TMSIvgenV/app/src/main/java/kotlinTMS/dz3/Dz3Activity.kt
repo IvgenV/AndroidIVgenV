@@ -1,10 +1,6 @@
 package kotlinTMS.dz3
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.provider.Contacts
-import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -31,30 +27,19 @@ class Dz3Activity : AppCompatActivity() {
         sortUsers()
 
 
-        GlobalScope.launch {
-            val response = fakeserver()
-
-            tvText.post {
-
-                tvText.text = response.toString()
-
-           }
-       }
-
         button.setOnClickListener {
 
-          /*   GlobalScope.async {
+           GlobalScope.launch {
 
                val response = fakeserver()
 
-                Log.e("Response fun",response.toString())
+               Log.e("Response fun",response.toString())
 
-                Handler(Looper.getMainLooper()).post {
-                    tvText.text = response.toString()
+               tvText.post{
+                   tvText.text = response.toString()
+               }
 
-                }
-
-            }*/
+            }
 
         }
 
@@ -70,7 +55,7 @@ class Dz3Activity : AppCompatActivity() {
 
     fun sortUsers(){
 
-        var list = mutableListOf(
+        val list = mutableListOf(
                 Consumer("Ivgen",1,27),
                 Consumer("Sasha",2,33),
                 Consumer("Tanya",3,25),
@@ -78,22 +63,17 @@ class Dz3Activity : AppCompatActivity() {
                 Consumer("Kate",5,26)
         )
 
-        var list2 = list.sortedWith(compareBy({it.age},{it.id}))
+        val list2 = list.sortedWith(compareBy({it.age},{it.id}))
         for(i in list2){
-            tvText.text = tvText.text.toString() + "Age: ${i.age}, id: ${i.id}, name: ${i.name}\n"
+            tvText.text = "${tvText.text} Age: ${i.age}, id: ${i.id}, name: ${i.name}\n"
         }
     }
 
     suspend fun fakeserver():Response{
-
-        tvText.text = ""
-        var start = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
-        Log.e("Request", "Started")
+        val start = "Time message sending: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n'
         delay(3000)
-        Log.e("Request", "After delay")
-        var end = "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
+        val end = "Time of message receipt: " + SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date()) + '\n' +
                 URL("https://jsonplaceholder.typicode.com/todos/1").readText()
-        Log.e("Request", end)
         return Response(start,end)
     }
 
