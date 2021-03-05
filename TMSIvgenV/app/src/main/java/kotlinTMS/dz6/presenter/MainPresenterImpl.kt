@@ -11,9 +11,9 @@ class MainPresenterImpl(private val manager:DatabaseManager,private val view:Dz6
     }
 
     override fun changeAge() {
-        if(view.changeAge()==-1){
-
-        }else manager.changeAge(view.changeAge())
+        if(view.changeAge()>0){
+            manager.changeAge(view.changeAge())
+        }
     }
 
     override fun requestUrl() {
@@ -21,8 +21,8 @@ class MainPresenterImpl(private val manager:DatabaseManager,private val view:Dz6
     }
 
     override fun changeUrl() {
-        if(view.changeUrl() == "Error 404!"){
-
-        }else manager.changeUrl(view.changeUrl())
+        if(view.changeUrl() != "Error 404!"){
+            manager.changeUrl(view.changeUrl())
+        }
     }
 }
