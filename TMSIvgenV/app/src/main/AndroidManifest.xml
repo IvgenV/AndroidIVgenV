@@ -25,6 +25,7 @@
         <activity android:name="kotlinTMS.dz4.Dz4Activity"/>
         <activity android:name="kotlinTMS.dz5.Dz5Activity"/>
         <activity android:name="kotlinTMS.dz6.view.Dz6Activity"/>
+        <activity android:name="kotlinTMS.dz8.view.Dz8Activity"/>
     </application>
 
 </manifest>

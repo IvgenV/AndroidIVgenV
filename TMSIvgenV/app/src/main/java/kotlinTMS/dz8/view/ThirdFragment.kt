@@ -24,8 +24,8 @@ class ThirdFragment : Fragment() {
     lateinit var tvText2:TextView
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         Log.d(SecondFragment.TAG,"onCreateView")
         return inflater.inflate(R.layout.third_fragment, container, false)
@@ -35,15 +35,15 @@ class ThirdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tvText1 = view.findViewById(R.id.TvText1Fragment3)
         tvText2 = view.findViewById(R.id.TvText2Fragment3)
-        viewModel = ViewModelProvider(requireActivity()).get("viewModel", DataViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get("viewModel",DataViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getText1().observe(requireActivity(),{
+        viewModel.getText1().observe(this,{
             tvText1.text = it
         })
-        viewModel.getText2().observe(requireActivity(),{
+        viewModel.getText2().observe(this,{
             tvText2.text = it
         })
     }
