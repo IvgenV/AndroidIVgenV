@@ -41,24 +41,10 @@ class FirstFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get("viewModel", DataViewModel::class.java)
         Log.d(TAG,"onActivityCreated")
-        edit1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                Log.d(TAG, "onTextChanged $s -> $listener")
-                viewModel.setText1(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-       /* edit1.doOnTextChanged{text, start, before, count ->
+        edit1.doOnTextChanged{text, start, before, count ->
             viewModel.setText1(text.toString())
-        }*/
+        }
         edit2.doOnTextChanged { text, _, _, _ ->
             viewModel.setText2(text.toString())
         }
