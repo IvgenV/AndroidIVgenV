@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TMSIvgenV Russian</string>
+    <string name="frame1">это первый Frame</string>
+    <string name="frame2">это второй Frame</string>
+    <string name="frame3">это третий Frame</string>
+    <string name="input1">введите текст для fragment1</string>
+    <string name="input2">введите текст для fragment2</string>
+</resources>
