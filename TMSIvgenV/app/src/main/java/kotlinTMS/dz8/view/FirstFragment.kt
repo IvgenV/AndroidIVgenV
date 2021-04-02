@@ -3,8 +3,6 @@ package kotlinTMS.dz8.view
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +23,6 @@ class FirstFragment : Fragment() {
     }
 
     private lateinit var viewModel: DataViewModel
-    private var listener: DataListener? = null
     private var change: ChangeFragment?=null
     private lateinit var edit1:TextInputEditText
     private lateinit var edit2:TextInputEditText
@@ -109,21 +106,9 @@ class FirstFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG,"onAttach")
-        if(context is DataListener){
-            listener = context
-        }
         if(context is ChangeFragment){
             change = context
         }
     }
 
-    /*override fun onDetach() {
-        super.onDetach()
-        Log.d(TAG,"onDetach")
-    }
-
-    override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        Log.d(TAG,"onAttachFragment")
-    }*/
 }

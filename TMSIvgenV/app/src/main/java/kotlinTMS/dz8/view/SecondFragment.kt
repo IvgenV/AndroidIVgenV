@@ -23,7 +23,7 @@ class SecondFragment : Fragment() {
 
     private lateinit var viewModel: DataViewModel
     private lateinit var message:TextView
-    private lateinit var messageSecomd:TextView
+    private lateinit var messageSecond:TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +40,7 @@ class SecondFragment : Fragment() {
             message.text = it
         })
         viewModel.getText2().observe(requireActivity(),{
-            messageSecomd.text = it
+            messageSecond.text = it
         })
         Log.d(TAG,"onActivityCreated")
     }
@@ -53,7 +53,7 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         message = view.findViewById(R.id.mesage)
-        messageSecomd = view.findViewById(R.id.mesageSecond)
+        messageSecond = view.findViewById(R.id.mesageSecond)
         Log.d(TAG,"onViewCreated")
     }
 
@@ -102,9 +102,6 @@ class SecondFragment : Fragment() {
         Log.d(TAG,"onAttach")
     }
 
-    fun setMessage(text:String){
-        Log.d(TAG,"setMessage")
-        message.text = text
-    }
+
 
 }

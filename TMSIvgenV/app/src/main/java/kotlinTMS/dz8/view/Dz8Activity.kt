@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tmsivgenv.R
 import kotlinTMS.dz8.model.Constants
 
-class Dz8Activity : AppCompatActivity(),DataListener,ChangeFragment {
+class Dz8Activity : AppCompatActivity(),ChangeFragment {
 
     companion object{
         const val TAG = Constants.TAG + " MainActivity"
@@ -27,7 +27,8 @@ class Dz8Activity : AppCompatActivity(),DataListener,ChangeFragment {
         thirdFragment = (savedThirdFragment ?: ThirdFragment.newInstance()) as ThirdFragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frame1, firstFragment,FirstFragment.TAG).replace(R.id.frame2,secondFragment,SecondFragment.TAG)
+                .replace(R.id.frame1, firstFragment,FirstFragment.TAG)
+                .replace(R.id.frame2,secondFragment,SecondFragment.TAG)
                 .commitNow()
         }
     }
@@ -62,20 +63,13 @@ class Dz8Activity : AppCompatActivity(),DataListener,ChangeFragment {
         Log.d(TAG, "onRestart")
     }
 
-    override fun onTextChangedTV1(str: String) {
-        Log.d(TAG, "onTextChanged")
-        if(secondFragment.isResumed){
-            secondFragment.setMessage(str)
-        }else{
-            Log.d(TAG, "not resumed")
-        }
-    }
-
     override fun changeFragment() {
         if(secondFragment.isResumed){
-            supportFragmentManager.beginTransaction().replace(R.id.frame2,thirdFragment,ThirdFragment.TAG).commit()
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame2,thirdFragment,ThirdFragment.TAG).commit()
         }else if(thirdFragment.isResumed){
-            supportFragmentManager.beginTransaction().replace(R.id.frame2,secondFragment,SecondFragment.TAG).commit()
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame2,secondFragment,SecondFragment.TAG).commit()
         }
     }
 

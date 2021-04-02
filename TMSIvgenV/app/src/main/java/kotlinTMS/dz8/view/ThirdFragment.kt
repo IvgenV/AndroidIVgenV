@@ -36,10 +36,6 @@ class ThirdFragment : Fragment() {
         tvText1 = view.findViewById(R.id.TvText1Fragment3)
         tvText2 = view.findViewById(R.id.TvText2Fragment3)
         viewModel = ViewModelProvider(requireActivity()).get("viewModel",DataViewModel::class.java)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel.getText1().observe(this,{
             tvText1.text = it
         })
@@ -47,4 +43,5 @@ class ThirdFragment : Fragment() {
             tvText2.text = it
         })
     }
+
 }
