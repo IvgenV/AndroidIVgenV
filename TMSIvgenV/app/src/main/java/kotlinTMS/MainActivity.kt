@@ -11,6 +11,7 @@ import kotlinTMS.dz3.Dz3Activity
 import kotlinTMS.dz4.Dz4Activity
 import kotlinTMS.dz5.Dz5Activity
 import kotlinTMS.dz6.view.Dz6Activity
+import kotlinTMS.dz8.view.Dz8Activity
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,20 +22,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var buttonDz4:Button
     lateinit var buttonDz5:Button
     lateinit var buttonDz6:Button
-
+    lateinit var buttonDz8:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        buttonDz1 = findViewById(R.id.dz1button)
-        buttonDz2 = findViewById(R.id.dz2button)
-        buttonDz3 = findViewById(R.id.dz3button)
-        buttonDz4 = findViewById(R.id.dz4button)
-        buttonDz5 = findViewById(R.id.dz5button)
-        buttonDz6 = findViewById(R.id.dz6button)
+        initializationButtons()
+        startActivity()
 
+    }
 
+    private fun startActivity(){
 
         buttonDz1.setOnClickListener{
             val intent = Intent(this,Dz1Activity::class.java)
@@ -65,6 +64,23 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Dz6Activity::class.java)
             startActivity(intent)
         }
+
+        buttonDz8.setOnClickListener{
+            val intent = Intent(this, Dz8Activity::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    fun initializationButtons(){
+
+        buttonDz1 = findViewById(R.id.dz1button)
+        buttonDz2 = findViewById(R.id.dz2button)
+        buttonDz3 = findViewById(R.id.dz3button)
+        buttonDz4 = findViewById(R.id.dz4button)
+        buttonDz5 = findViewById(R.id.dz5button)
+        buttonDz6 = findViewById(R.id.dz6button)
+        buttonDz8 = findViewById(R.id.dz8button)
 
     }
 

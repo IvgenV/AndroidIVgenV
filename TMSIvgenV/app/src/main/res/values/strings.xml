@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">TMSIvgenV</string>
-    <string name="inputLogin">Input Login</string>
-    <string name="inputPassword">Input Password</string>
-    <string name="buttonAdd">Add User</string>
-    <string name="buttonLogin">Login</string>
-    <string name="result">Result going there</string>
-    <string name="checkbox1">Result going there</string>
-    <string name="checkbox2">Result going there</string>
-    <string name="checkbox3">Result going there</string>
+    <string name="inputLogin" translatable="false">Input Login</string>
+    <string name="inputPassword" translatable="false">Input Password</string>
+    <string name="buttonAdd" translatable="false">Add User</string>
+    <string name="buttonLogin" translatable="false">Login</string>
+    <string name="result" translatable="false">Result going there</string>
+    <string name="checkbox1" translatable="false">Result going there</string>
+    <string name="checkbox2" translatable="false">Result going there</string>
+    <string name="checkbox3" translatable="false">Result going there</string>
+    <string name="changeFragment" translatable="false">ChangeFragment</string>
+    <string name="frame1">it is Frame1</string>
+    <string name="frame2">it is Frame2</string>
+    <string name="frame3">it is Frame3</string>
+    <string name="input1">input text to fragment1</string>
+    <string name="input2">input text to fragment2</string>
 </resources>

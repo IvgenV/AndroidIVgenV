@@ -12,4 +12,6 @@
     <color name="red">#FF0101</color>
     <color name="green">#4DFF01</color>
     <color name="yellow">#FFFB01</color>
+    <color name="Blue_For_Fragment3">#2196f3</color>
+    <color name="Green_For_Fragment3">#43a047</color>
 </resources>

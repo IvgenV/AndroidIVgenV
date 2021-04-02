@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TMSIvgenV French</string>
+    <string name="frame1">ce est cadre1</string>
+    <string name="frame2">ce est cadre2</string>
+    <string name="frame3">ce est cadre3</string>
+    <string name="input1">saisir du texte pour fragment1</string>
+    <string name="input2">saisir du texte pour fragment2</string>
+</resources>
